@@ -1,5 +1,13 @@
+import CardList from "./components/Card/Cardlist";
+import Search from "./components/Search";
+
 const App = () => {
-  return <div className="text-green-500">hi</div>;
+  return (
+    <>
+      <Search />
+      <CardList />
+    </>
+  );
 };
 
 export default App;
