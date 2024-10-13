@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import hero from "../assets/hero.png";
 
 const Hero = () => {
@@ -13,9 +14,12 @@ const Hero = () => {
             news.
           </p>
           <div className="mx-auto lg:mx-0">
-            <button className="px-10 py-5 text-2xl font-bold text-white rounded bg-lightGreen lg:py-4 hover:opacity-70">
+            <Link
+              to="/search"
+              className="px-10 py-5 text-2xl font-bold text-white rounded bg-lightGreen lg:py-4 hover:opacity-70"
+            >
               Get Started
-            </button>
+            </Link>
           </div>
         </div>
         <div className="mx-auto mb-24 md:w-180 md:px-10 lg:mb-0 lg:w-1/2">

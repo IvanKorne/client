@@ -1,6 +1,7 @@
 import { SyntheticEvent } from "react";
 import { CompanySearch } from "../../types";
 import AddPortfolio from "../AddPortfolio";
+import { Link } from "react-router-dom";
 
 type CardProps = {
   id: string;
@@ -13,9 +14,9 @@ const Card = ({ company, id, onPortfolioCreate }: CardProps) => {
     <div className="flex flex-col w-full gap-2 mb-5">
       <img alt="company logo" />
       <div className="text-xl font-bold">
-        <h2>
+        <Link to={`/company/${company.symbol}`}>
           {company.name} ({company.symbol})
-        </h2>
+        </Link>
       </div>
       <div>
         <p className="text-lg font-semibold">{company.currency}</p>

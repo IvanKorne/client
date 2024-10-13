@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/navbarLogo.png";
 
 const Navbar = () => {
@@ -5,11 +6,13 @@ const Navbar = () => {
     <nav className="container relative p-6 mx-auto">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-20">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
           <div className="hidden font-bold lg:flex">
-            <button className="text-black hover:text-darkBlue">
-              Dashboard
-            </button>
+            <Link to="/search" className="text-black hover:text-darkBlue">
+              Search
+            </Link>
           </div>
         </div>
         <div className="items-center hidden space-x-6 lg:flex text-back">
