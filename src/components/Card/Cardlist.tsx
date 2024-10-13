@@ -1,11 +1,24 @@
+import { SyntheticEvent } from "react";
+import { CompanySearch } from "../../types";
 import Card from "./Card";
+import { v4 as uuidv4 } from "uuid";
 
-const Cardlist = () => {
+type CardlistProps = {
+  searchResults: CompanySearch[];
+  onPortfolioCreate: (e: SyntheticEvent) => void;
+};
+
+const Cardlist = ({ searchResults, onPortfolioCreate }: CardlistProps) => {
   return (
     <div>
-      <Card ticker="APPL" companyName="Apple" price={130} />
-      <Card ticker="MSFT" companyName="Microsoft" price={200} />
-      <Card ticker="TSLA" companyName="Tesla" price={300} />
+      {searchResults.map((company) => (
+        <Card
+          id={company.symbol}
+          company={company}
+          key={uuidv4()}
+          onPortfolioCreate={onPortfolioCreate}
+        />
+      ))}
     </div>
   );
 };

@@ -1,17 +1,37 @@
+import { SyntheticEvent } from "react";
+import { CompanySearch } from "../../types";
+import AddPortfolio from "../AddPortfolio";
+
 type CardProps = {
-  companyName: string;
-  ticker: string;
-  price: number;
+  id: string;
+  company: CompanySearch;
+  onPortfolioCreate: (e: SyntheticEvent) => void;
 };
 
-const Card = ({ companyName, ticker, price }: CardProps) => {
+const Card = ({ company, id, onPortfolioCreate }: CardProps) => {
   return (
-    <div className="flex flex-col gap-1 w-20 mb-5">
-      <div className="font-bold text-xl">{companyName}</div>
-      <div className="flex flex-row justify-between items-center">
-        <p className="font-semibold text-lg">{ticker}</p>
-        <p className="font-medium text-base">{price}</p>
+    <div className="flex flex-col w-full gap-2 mb-5">
+      <img alt="company logo" />
+      <div className="text-xl font-bold">
+        <h2>
+          {company.name} ({company.symbol})
+        </h2>
       </div>
+      <div>
+        <p className="text-lg font-semibold">{company.currency}</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quaerat
+          id expedita? Eum quisquam nam nobis rem quasi tempore, quod hic
+          assumenda ad laborum est molestias perferendis quas iusto possimus?
+        </p>
+        <p className="font-semibold">
+          {company.exchangeShortName} - {company.stockExchange}
+        </p>
+      </div>
+      <AddPortfolio
+        onPortfolioCreate={onPortfolioCreate}
+        symbol={company.symbol}
+      />
     </div>
   );
 };
