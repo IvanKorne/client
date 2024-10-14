@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { CompanyProfile } from "../types";
+import { CompanyProfile } from "../lib/types";
 import { getCompanyProfileRequest } from "../api/companyData";
 import Sidebar from "../components/Sidebar";
 import CompanyDashboard from "../components/CompanyDashboard";
@@ -26,7 +26,7 @@ const CompanyPage = () => {
       {company ? (
         <div className="relative flex w-full overflow-x-hidden ct-docs-disable-sidebar-content">
           <Sidebar />
-          <CompanyDashboard>
+          <CompanyDashboard ticker={ticker!}>
             <Tile title="Company Name" value={company.companyName} />
           </CompanyDashboard>
         </div>

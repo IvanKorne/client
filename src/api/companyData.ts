@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CompanyProfile, CompanySearch } from "../types";
+import { CompanyProfile, CompanySearch } from "../lib/types";
 
 export const searchCompanies = async (query: string) => {
   try {

@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-import { CompanySearch } from "../../types";
+import { CompanySearch } from "../../lib/types";
 import AddPortfolio from "../AddPortfolio";
 import { Link } from "react-router-dom";
 
