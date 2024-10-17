@@ -19,7 +19,7 @@ const DesignPage = () => {
         aspects of the app!
       </h3>
       <RatioList config={tableConfig} data={INCOME_STATEMENT_DATA} />
-      <Table />
+      <Table configs={tableConfig} data={INCOME_STATEMENT_DATA} />
     </div>
   );
 };

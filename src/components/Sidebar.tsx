@@ -19,7 +19,7 @@ const Sidebar = () => {
             </Link>
             <div className="flex flex-col list-none md:flex-col md:min-w-full">
               <Link
-                to="income-statment"
+                to="income-statement"
                 className="flex pb-4 font-bold no-underline uppercase md:min-w-full text-blueGray-500 text-medium pt--1"
               >
                 <FaHome />

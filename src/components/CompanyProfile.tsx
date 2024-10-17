@@ -69,15 +69,15 @@ const CompanyProfile = () => {
   const ticker = useOutletContext();
   const [companyData, setCompanyData] = useState<CompanyKeyMetrics>();
 
-  const getKeyMetrics = async (ticker: string) => {
-    const data = await getKeyMetricsRequest(ticker);
+  const getKeyMetrics = async () => {
+    const data = await getKeyMetricsRequest(ticker as string);
     if (data) {
       setCompanyData(data[0]);
     }
   };
   useEffect(() => {
-    getKeyMetrics(ticker as string);
-  }, [ticker]);
+    getKeyMetrics();
+  }, []);
   return (
     <div>
       {companyData ? (
