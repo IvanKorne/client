@@ -28,6 +28,12 @@ const CompanyPage = () => {
           <Sidebar />
           <CompanyDashboard ticker={ticker!}>
             <Tile title="Company Name" value={company.companyName} />
+            <Tile title="Price" value={company.price.toString()} />
+            <Tile title="Sector" value={company.sector} />
+            <Tile title="DCF" value={company.dcf.toString()} />
+            <p className="p-3 m-4 mt-1 text-gray-900 bg-white rounded-lg shadow-sm">
+              {company.description}
+            </p>
           </CompanyDashboard>
         </div>
       ) : (

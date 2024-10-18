@@ -14,7 +14,7 @@ const Card = ({ company, id, onPortfolioCreate }: CardProps) => {
     <div className="flex flex-col w-full gap-2 mb-5">
       <img alt="company logo" />
       <div className="text-xl font-bold">
-        <Link to={`/company/${company.symbol}`}>
+        <Link to={`/company/${company.symbol}/company-profile`}>
           {company.name} ({company.symbol})
         </Link>
       </div>

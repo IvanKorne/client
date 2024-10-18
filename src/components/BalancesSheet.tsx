@@ -4,6 +4,7 @@ import { CompanyBalanceSheet } from "../lib/types";
 import { useEffect, useState } from "react";
 import { getBalanceSheetRequest } from "../api/financialMetrics";
 import RatioList from "./RatioList";
+import Spinner from "./Spinner";
 
 const config = [
   {
@@ -95,7 +96,7 @@ const BalancesSheet = () => {
       {balanceSheet ? (
         <RatioList config={config} data={balanceSheet} />
       ) : (
-        <div>Loading...</div>
+        <Spinner />
       )}
     </div>
   );

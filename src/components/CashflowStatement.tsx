@@ -4,6 +4,7 @@ import { CompanyCashFlow } from "../lib/types";
 import { useEffect, useState } from "react";
 import { getCashflowRequest } from "../api/financialMetrics";
 import Table from "./Table";
+import Spinner from "./Spinner";
 
 const config = [
   {
@@ -66,11 +67,7 @@ const CashflowStatement = () => {
   };
   return (
     <div>
-      {cashflow ? (
-        <Table configs={config} data={cashflow} />
-      ) : (
-        <div>Loading...</div>
-      )}
+      {cashflow ? <Table configs={config} data={cashflow} /> : <Spinner />}
     </div>
   );
 };
