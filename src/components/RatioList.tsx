@@ -1,22 +1,3 @@
-import { COMPANY_DATA } from "../lib/companyData";
-
-const data = COMPANY_DATA[0];
-
-type Company = typeof data;
-
-const config = [
-  {
-    label: "Date",
-    render: (company: Company) => company.companyName,
-    subTitle: "This is the company name!",
-  },
-  {
-    label: "Bate",
-    render: (company: Company) => company.companyName,
-    subTitle: "This is the company name!",
-  },
-];
-
 type RatioListProps = {
   config: any;
   data: any;
