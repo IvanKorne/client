@@ -85,7 +85,6 @@ const BalancesSheet = () => {
 
   const getBalanceSheet = async () => {
     const data = await getBalanceSheetRequest(ticker);
-    console.log(data);
     if (data) {
       setBalanceSheet(data[0]);
     }

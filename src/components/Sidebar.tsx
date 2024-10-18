@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaHome, FaTable, FaTabletAlt } from "react-icons/fa";
+import { FaCashRegister, FaHome, FaTable, FaTabletAlt } from "react-icons/fa";
 
 const Sidebar = () => {
   return (
@@ -27,6 +27,13 @@ const Sidebar = () => {
             >
               <FaTabletAlt />
               <h6 className="ml-3">Balance Sheet</h6>
+            </Link>
+            <Link
+              to="cashflow-statement"
+              className="flex items-center pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-blueGray-500"
+            >
+              <FaCashRegister />
+              <h6 className="ml-3">Cashflow Statement</h6>
             </Link>
           </div>
         </div>
