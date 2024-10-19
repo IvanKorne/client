@@ -5,6 +5,7 @@ import { getCompanyProfileRequest } from "../api/companyData";
 import Sidebar from "../components/Sidebar";
 import CompanyDashboard from "../components/CompanyDashboard";
 import Tile from "../components/Tile";
+import TenK from "../components/TenK";
 
 const CompanyPage = () => {
   const { ticker } = useParams();
@@ -24,16 +25,15 @@ const CompanyPage = () => {
   return (
     <div>
       {company ? (
-        <div className="relative flex w-full overflow-x-hidden ct-docs-disable-sidebar-content">
+        <div className="relative flex w-full overflow-x ">
           <Sidebar />
           <CompanyDashboard ticker={ticker!}>
             <Tile title="Company Name" value={company.companyName} />
-            <Tile title="Price" value={company.price.toString()} />
+            <Tile title="Price" value={`$${company.price.toString()}`} />
+            <Tile title="DCF" value={`$${company.dcf.toString()}`} />
             <Tile title="Sector" value={company.sector} />
-            <Tile title="DCF" value={company.dcf.toString()} />
-            <p className="p-3 m-4 mt-1 text-gray-900 bg-white rounded-lg shadow-sm">
-              {company.description}
-            </p>
+
+            <TenK ticker={company.symbol} />
           </CompanyDashboard>
         </div>
       ) : (

@@ -4,6 +4,7 @@ import {
   CompanyCashFlow,
   CompanyIncomeStatement,
   CompanyKeyMetrics,
+  CompanyTenK,
 } from "../lib/types";
 
 export const getKeyMetricsRequest = async (query: string) => {
@@ -45,6 +46,17 @@ export const getCashflowRequest = async (query: string) => {
       `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
     );
     return data as CompanyCashFlow[];
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getTenKRequest = async (query: string) => {
+  try {
+    const { data } = await axios.get(
+      `https://financialmodelingprep.com/api/v3/sec_filings/${query}?type=10-k&page=0&apikey=${process.env.REACT_APP_API_KEY}`
+    );
+    return data as CompanyTenK[];
   } catch (err) {
     console.log(err);
   }
