@@ -5,6 +5,7 @@ import { getKeyMetricsRequest } from "../api/financialMetrics";
 import RatioList from "./RatioList";
 import Spinner from "./Spinner";
 import { formatLargeNumber } from "../lib/helpers";
+import StockComment from "./Stock/StockComment";
 
 const tableConfig = [
   {
@@ -95,7 +96,10 @@ const CompanyProfile = () => {
   return (
     <div>
       {companyData ? (
-        <RatioList data={companyData} config={tableConfig} />
+        <>
+          <RatioList data={companyData} config={tableConfig} />
+          <StockComment stockSymbol={ticker as string} />
+        </>
       ) : (
         <Spinner />
       )}

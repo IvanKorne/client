@@ -5,7 +5,7 @@ type RatioListProps = {
 
 const RatioList = ({ config, data }: RatioListProps) => {
   return (
-    <div className="h-full p-4 mb-4 ml-4 bg-white rounded-lg shadow sm:p-6">
+    <div className="p-4 mb-4 ml-4 bg-white rounded-lg shadow  sm:p-6">
       <ul className="divide-y divide-gray-200">
         {config.map((row: any) => (
           <li className="py-3 sm:py-4">

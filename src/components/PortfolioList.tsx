@@ -1,8 +1,9 @@
 import { SyntheticEvent } from "react";
 import CardPortfolio from "./Card/CardPortfolio";
+import { PortfolioGet } from "../lib/types";
 
 type PortfolioListProps = {
-  portfolios: string[];
+  portfolios: PortfolioGet[];
   onPortfolioDelete: (e: SyntheticEvent) => void;
 };
 

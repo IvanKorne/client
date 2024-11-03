@@ -1,35 +1,55 @@
-import { useState, SyntheticEvent, ChangeEvent } from "react";
-import { CompanySearch } from "../lib/types";
+import { useState, SyntheticEvent, ChangeEvent, useEffect } from "react";
+import { CompanySearch, PortfolioGet } from "../lib/types";
 import { searchCompanies } from "../api/companyData";
 import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 import PortfolioList from "../components/PortfolioList";
 import Cardlist from "../components/Card/Cardlist";
+import {
+  addPortfolioRequest,
+  deletePortfolioRequest,
+  getPortfolioRequest,
+} from "../auth/portfolioService";
+import { toast } from "react-toastify";
 
 const SearchPage = () => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
-  const [portfolioValues, setPortfolioValues] = useState<string[]>([]);
+  const [portfolioValues, setPortfolioValues] = useState<PortfolioGet[] | null>(
+    []
+  );
+
+  useEffect(() => {
+    getPortfolio();
+  }, []);
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
-  const onPortfolioCreate = async (e: any) => {
-    e.preventDefault();
-    const exists = portfolioValues.find((value) => value === e.target[0].value);
-    if (exists) return;
-    const updatedPortfolio = [...portfolioValues, e.target[0].value];
-    setPortfolioValues(updatedPortfolio);
+  const getPortfolio = async () => {
+    const data = await getPortfolioRequest();
+    if (data) {
+      setPortfolioValues(data);
+    }
   };
 
-  const onPortfolioDelete = async (e: any) => {
+  const addToPortfolio = async (e: any) => {
     e.preventDefault();
+    const data = await addPortfolioRequest(e.target[0].value);
+    if (data) {
+      toast.success("Stock added from portfolio!");
+      getPortfolio();
+    }
+  };
 
-    const updatedPortfolio = portfolioValues.filter(
-      (value) => value !== e.target[0].value
-    );
-    setPortfolioValues(updatedPortfolio);
+  const deleteFromPortfolio = async (e: any) => {
+    e.preventDefault();
+    const data = await deletePortfolioRequest(e.target[0].value);
+    if (data) {
+      toast.success("Stock deleted from portfolio!");
+      getPortfolio();
+    }
   };
 
   const onSearchSubmit = async (e: SyntheticEvent) => {
@@ -46,12 +66,12 @@ const SearchPage = () => {
         handleSearchChange={handleSearchChange}
       />
       <PortfolioList
-        portfolios={portfolioValues}
-        onPortfolioDelete={onPortfolioDelete}
+        portfolios={portfolioValues!}
+        onPortfolioDelete={deleteFromPortfolio}
       />
       <Cardlist
         searchResults={searchResult}
-        onPortfolioCreate={onPortfolioCreate}
+        onPortfolioCreate={addToPortfolio}
       />
     </>
   );

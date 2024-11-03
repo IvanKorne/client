@@ -268,3 +268,27 @@ export type UserProfile = {
   userName: string;
   email: string;
 };
+
+export type CommentPost = {
+  title: string;
+  content: string;
+};
+
+export type CommentGet = CommentPost & {
+  createdBy: string;
+};
+
+export type PortfolioGet = {
+  id: number;
+  symbol: string;
+  companyName: string;
+  purchase: number;
+  lastDiv: number;
+  marketCap: number;
+  industy: string;
+  comments: CommentGet[];
+};
+
+export type PortfolioPost = {
+  symbol: string;
+};
