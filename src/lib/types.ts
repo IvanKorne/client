@@ -44,7 +44,7 @@ export type CompanyProfile = {
   isFund: boolean;
 };
 
-export interface CompanyIncomeStatement {
+export type CompanyIncomeStatement = {
   date: string;
   symbol: string;
   reportedCurrency: string;
@@ -83,7 +83,7 @@ export interface CompanyIncomeStatement {
   weightedAverageShsOutDil: number;
   link: string;
   finalLink: string;
-}
+};
 
 export type CompanyKeyMetrics = {
   revenuePerShareTTM: number;
@@ -248,7 +248,7 @@ export type CompanyCashFlow = {
   finalLink: string;
 };
 
-export interface CompanyTenK {
+export type CompanyTenK = {
   symbol: string;
   fillingDate: string;
   acceptedDate: string;
@@ -256,4 +256,15 @@ export interface CompanyTenK {
   type: string;
   link: string;
   finalLink: string;
-}
+};
+
+export type UserProfileToken = {
+  userName: string;
+  email: string;
+  token: string;
+};
+
+export type UserProfile = {
+  userName: string;
+  email: string;
+};
